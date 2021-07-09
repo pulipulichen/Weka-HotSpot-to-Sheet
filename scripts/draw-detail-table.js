@@ -295,8 +295,11 @@ let getRules = function (result) {
     
     let indexes = ruleAndIndex[1].split(':(')
     
+    let leftHandRule = leftHands[0].slice(1).trim()
+    
     return {
-      'left-hand-rule': leftHands[0].slice(1).trim(),
+      'left-hand-rule': leftHandRule,
+      'left-hand-rule-length': leftHandRule.split(', ').length,
       'left-hand-count': Number(leftHands[1]),
       'right-hand-rule': rightHands[0].trim(),
       'right-hand-count': Number(rightHands[1]),
@@ -319,7 +322,13 @@ let parse_result_to_object = function (_result) {
   
   //console.log(getRules(_result))
   
-  document.getElementById('filename').value = getRelation(_result) + '.ods'  
+  var d = new Date();
+  var utc = d.getTime() - (d.getTimezoneOffset() * 60000);
+
+  var local = new Date(utc);
+  var dateString = local.toJSON().slice(0, 19).replace(/:/g, "-");
+  
+  document.getElementById('filename').value = getRelation(_result) + '_' + dateString + '.ods'  
 }
 
 let remove_unknown_cat = function (_attr_levels) {

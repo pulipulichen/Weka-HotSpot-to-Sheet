@@ -120,7 +120,7 @@ var _calc_cluster_score_nominal = async function (_full_data_attr, _cluster_data
 // -------------------------------------
 
 var _output_filename_surffix = "_output";
-var _output_filename_ext = ".csv";
+var _output_filename_ext = ".ods";
 
 // -------------------------------------
 

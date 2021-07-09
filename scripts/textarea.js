@@ -141,7 +141,16 @@ let _process_file_object = async function (_result, _file_name, type) {
     }
     //return false
   }
+  
+  var d = new Date();
+  var utc = d.getTime() - (d.getTimezoneOffset() * 60000);
 
+  var local = new Date(utc);
+  var dateString = local.toJSON().slice(0, 19).replace(/:/g, "-");
+  
+  
+  _file_name = getRelation(_result) + '_' + dateString + '.ods'  
+  //console.log(_result, _file_name)
   //console.log(evt.target.files[0].type)
   //if ()
 
@@ -155,7 +164,7 @@ let _process_file_object = async function (_result, _file_name, type) {
 let _send_to_process_file = function (_result, _file_name) {
   var _panel = $(".file-process-framework");
   _process_file(_result, async function (_result) {
-    _panel.find(".preview").val(_result);
+    _panel.find("#input_mode_textarea").val(_result);
 
     setPreviewCluster(_result)
 
