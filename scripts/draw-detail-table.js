@@ -312,11 +312,11 @@ let getRules = function (result) {
     let leftHandRule = leftHands[0].slice(1).trim()
     
     return {
-      'left-hand-rule': leftHandRule,
-      'left-hand-rule-length': leftHandRule.split(', ').length,
-      'left-hand-count': Number(leftHands[1]),
-      'right-hand-rule': rightHands[0].trim(),
-      'right-hand-count': Number(rightHands[1]),
+      'LHS-rule': leftHandRule,
+      'LHS-length': leftHandRule.split(', ').length,
+      'LHS-count': Number(leftHands[1]),
+      'RHS-rule': rightHands[0].trim(),
+      'RHS-count': Number(rightHands[1]),
       conf: parseIndex(indexes[1]),
       lift: parseIndex(indexes[2]),
       lev: parseIndex(indexes[3]),
