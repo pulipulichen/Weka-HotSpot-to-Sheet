@@ -277,7 +277,21 @@ let getRelation = function (result) {
   return 'unknown'
 }
 
+let getInstancesCount = function (result) {
+  if (result.indexOf('[value count in total population: ')) {
+    result = result.slice(result.indexOf('[value count in total population: ') + 34)
+    result = result.slice(0, result.indexOf(' instances ('))
+    return Number(result)
+  }
+  return 0
+}
+
 let getRules = function (result) {
+  let total = getInstancesCount(result)
+  if (total === 0) {
+    return []
+  }
+  
   if (result.indexOf('\nMinimum improvement in target:')) {
     result = result.slice(result.indexOf('\nMinimum improvement in target:') + 32)
     result = result.slice(result.indexOf('%\n\n') + 3)
