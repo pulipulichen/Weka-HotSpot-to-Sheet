@@ -278,9 +278,16 @@ let getRelation = function (result) {
 }
 
 let getInstancesCount = function (result) {
-  if (result.indexOf('[value count in total population: ')) {
+  
+  if (result.indexOf('[value count in total population: ') > -1) {
     result = result.slice(result.indexOf('[value count in total population: ') + 34)
     result = result.slice(0, result.indexOf(' instances ('))
+    return Number(result)
+  }
+  else if (result.indexOf(`\nTotal population: `) > -1) {
+    result = result.slice(result.indexOf('\nTotal population: ') + 19)
+    result = result.slice(0, result.indexOf(' instances'))
+    //console.log(result)
     return Number(result)
   }
   return 0
@@ -341,13 +348,13 @@ let getFullRules = function (ruleAndIndex, total) {
 }
 
 let getSimpleRules = function (ruleAndIndex, total) {
-  
+    //console.log(ruleAndIndex, total)
     
-    let rules = ruleAndIndex[0].split(' ==> [')
+    let rules = ruleAndIndex[0].trim().split('] ==> [')
     let leftHands = rules[0]
     let rightHands = rules[1].split(']: ')
     
-    let leftHandRule = leftHands[0].slice(1).trim()
+    let leftHandRule = leftHands.slice(1).trim()
     
     let rhsCount = Number(rightHands[1])
     let support = Math.round((rhsCount / total) * 100) / 100

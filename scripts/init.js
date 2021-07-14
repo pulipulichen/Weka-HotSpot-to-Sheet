@@ -24,6 +24,7 @@ $(function () {
   //$.get("data.csv", function (_data) {
   //$.get("data/data-work.csv", function (_data) {
   $.get("data/overdued-2020.txt", function (_data) {
+  //$.get("data/cpu-num.txt", function (_data) {
   //$.get("data/data-text-mining.csv", function (_data) {
     $("#input_mode_textarea").val(_data);
     $("#input_mode_textarea").keyup();

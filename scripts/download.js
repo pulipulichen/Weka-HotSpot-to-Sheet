@@ -6,6 +6,9 @@ var _download_file = function (data, filename, type) {
   
   let rules = getRules(data)
   
+  //console.log(rules[0])
+  //return false
+  
   var wb = XLSX.utils.book_new();
 
   wb.SheetNames.push("rules")
