@@ -1,0 +1,33 @@
+=== Run information ===
+
+Scheme:       weka.associations.HotSpot -c last -V first -S 0.03 -M 100 -length 1 -I 0.01 -R
+Relation:     cpu
+Instances:    209
+Attributes:   7
+              MYCT
+              MMIN
+              MMAX
+              CACH
+              CHMIN
+              CHMAX
+              class
+=== Associator model (full training set) ===
+
+
+Hot Spot
+========
+Total population: 209 instances
+Target attribute: class
+Target average in total population: 105.622
+Minimum segment size: 6 instances (3% of total population)
+Maximum branching factor: 100
+Maximum rule length: 1
+Minimum improvement in target: 1%
+
+[MMIN > 8000] ==> [class  573.25]: 8   
+[MYCT <= 23] ==> [class  478.1667]: 6   
+[CACH > 65] ==> [class  460.6]: 15   
+[CHMAX > 64] ==> [class  433.5714]: 7   
+[MMAX > 24000] ==> [class  408.2593]: 27   
+[CHMIN > 12] ==> [class  401]: 15   
+

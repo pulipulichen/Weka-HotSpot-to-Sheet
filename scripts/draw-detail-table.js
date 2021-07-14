@@ -303,6 +303,18 @@ let getRules = function (result) {
     // 取得前提條件的括號
     
     let ruleAndIndex = line.split('   <')
+    if (ruleAndIndex.length > 1) {
+      return getFullRules(ruleAndIndex, total)
+    }
+    else {
+      return getSimpleRules(ruleAndIndex, total)
+    }
+  })
+}
+
+let getFullRules = function (ruleAndIndex, total) {
+  
+    
     let rules = ruleAndIndex[0].split(' ==> [')
     let leftHands = rules[0].split(']: ')
     let rightHands = rules[1].split(']: ')
@@ -311,18 +323,43 @@ let getRules = function (result) {
     
     let leftHandRule = leftHands[0].slice(1).trim()
     
+    let rhsCount = Number(rightHands[1])
+    let support = Math.round((rhsCount / total) * 100) / 100
+    
     return {
       'LHS-rule': leftHandRule,
       'LHS-length': leftHandRule.split(', ').length,
       'LHS-count': Number(leftHands[1]),
       'RHS-rule': rightHands[0].trim(),
-      'RHS-count': Number(rightHands[1]),
+      'RHS-count': rhsCount,
       conf: parseIndex(indexes[1]),
       lift: parseIndex(indexes[2]),
       lev: parseIndex(indexes[3]),
       conv: parseIndex(indexes[4]),
+      sup: support
     }
-  })
+}
+
+let getSimpleRules = function (ruleAndIndex, total) {
+  
+    
+    let rules = ruleAndIndex[0].split(' ==> [')
+    let leftHands = rules[0]
+    let rightHands = rules[1].split(']: ')
+    
+    let leftHandRule = leftHands[0].slice(1).trim()
+    
+    let rhsCount = Number(rightHands[1])
+    let support = Math.round((rhsCount / total) * 100) / 100
+    
+    return {
+      'LHS-rule': leftHandRule,
+      'LHS-length': leftHandRule.split(', ').length,
+      //'LHS-count': Number(leftHands[1]),
+      'RHS-rule': rightHands[0].trim(),
+      'RHS-count': rhsCount,
+      sup: support
+    }
 }
 
 let parseIndex = function (indexPart) {
