@@ -8,7 +8,7 @@ Attributes:   17
               所屬單位
               所屬系所
               借閱總數
-              0總類借閱數
+              0總類借閱總數
               1哲學類借閱總數
               2宗教類借閱總數
               3自然科學類借閱總數
@@ -26,13 +26,14 @@ Attributes:   17
 
 Hot Spot
 ========
+Mode: maximise
 Total population: 9479 instances
 Target attribute: 是否有逾期記錄
 Target value: 是 [value count in total population: 2219 instances (23.41%)]
 Minimum value count for segments: 22 instances (1% of target value total population)
 Maximum branching factor: 100
 Maximum rule length: 1
-Minimum improvement in target: 1%
+Minimum improvement: 1% increase in probability
 
 [所屬系所=台文所]: 60 ==> [是否有逾期記錄=是]: 24   <conf:(0.4)> lift:(1.71) lev:(0) conv:(1.24) 
 [2宗教類借閱總數 > 14]: 56 ==> [是否有逾期記錄=是]: 22   <conf:(0.39)> lift:(1.68) lev:(0) conv:(1.23) 
@@ -54,7 +55,7 @@ Minimum improvement in target: 1%
 [所屬系所=傳播碩士學程]: 169 ==> [是否有逾期記錄=是]: 46   <conf:(0.27)> lift:(1.16) lev:(0) conv:(1.04) 
 [所屬系所=斯語系]: 144 ==> [是否有逾期記錄=是]: 39   <conf:(0.27)> lift:(1.16) lev:(0) conv:(1.04) 
 [所屬單位=傳播學院]: 859 ==> [是否有逾期記錄=是]: 232   <conf:(0.27)> lift:(1.15) lev:(0) conv:(1.05) 
-[0總類借閱數 > 2]: 275 ==> [是否有逾期記錄=是]: 74   <conf:(0.27)> lift:(1.15) lev:(0) conv:(1.04) 
+[0總類借閱總數 > 2]: 275 ==> [是否有逾期記錄=是]: 74   <conf:(0.27)> lift:(1.15) lev:(0) conv:(1.04) 
 [所屬系所=日文系]: 134 ==> [是否有逾期記錄=是]: 36   <conf:(0.27)> lift:(1.15) lev:(0) conv:(1.04) 
 [所屬單位=國務院]: 531 ==> [是否有逾期記錄=是]: 142   <conf:(0.27)> lift:(1.14) lev:(0) conv:(1.04) 
 [5社會科學類借閱總數 > 18]: 255 ==> [是否有逾期記錄=是]: 68   <conf:(0.27)> lift:(1.14) lev:(0) conv:(1.04) 

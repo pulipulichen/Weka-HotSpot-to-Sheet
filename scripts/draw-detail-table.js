@@ -304,6 +304,10 @@ let getRules = function (result) {
     result = result.slice(result.indexOf('%\n\n') + 3)
   }
   
+  if (result.indexOf('increase in probability')) {
+    result = result.slice(result.indexOf('increase in probability') + 23)
+  }
+  
   result = result.trim()
   
   return result.split('\n').map(line => {
