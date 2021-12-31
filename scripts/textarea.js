@@ -1,6 +1,7 @@
 
 /* global _output_filename_surffix, _output_filename_ext, XLSX */
 
+let errorTimer
 var _load_textarea = async function (evt) {
   var _panel = $(".file-process-framework");
 
@@ -10,6 +11,18 @@ var _load_textarea = async function (evt) {
   if (_result.trim() === "") {
     return;
   }
+  
+  //console.log(validateTextarea(_result))
+  if (validateTextarea(_result) === false) {
+    clearTimeout(errorTimer)
+    errorTimer = setTimeout(() => {
+      window.alert('Format Error')
+    }, 3000)
+    
+    $('.download-file').addClass('disabled')
+    return false
+  }
+  $('.download-file').removeClass('disabled')
 
   // ---------------------------
 
@@ -44,6 +57,20 @@ var _load_textarea = async function (evt) {
   }); // await _process_file(_result, function (_result) {
 };
 
+var validateTextarea = function (_result) {
+  let needle = '% increase in probability\n\n'
+  let pos = _result.indexOf(needle)
+  if (pos < 100) {
+    return false
+  }
+  
+  let rules = _result.slice(pos + needle.length)
+  //console.log(rules)
+  if (rules.indexOf('])\n') > -1) {
+    return false
+  }
+  return true
+}
 
 var _load_file = function (evt) {
   //console.log(1);
@@ -153,6 +180,7 @@ let _process_file_object = async function (_result, _file_name, type) {
   //console.log(_result, _file_name)
   //console.log(evt.target.files[0].type)
   //if ()
+  //console.log(_result)
 
   try {
     _send_to_process_file(_result, _file_name)

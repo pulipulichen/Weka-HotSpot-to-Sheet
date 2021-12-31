@@ -1,0 +1,47 @@
+=== Run information ===
+
+Scheme:       weka.associations.HotSpot -c last -V first -S 0.33 -M 2 -length 3 -I 0.01
+Relation:     借書逾期讀者資料2020 - data
+Instances:    9479
+Attributes:   17
+              讀者類型
+              所屬單位
+              所屬系所
+              借閱總數
+              0總類借閱總數
+              1哲學類借閱總數
+              2宗教類借閱總數
+              3自然科學類借閱總數
+              4應用科學類借閱總數
+              5社會科學類借閱總數
+              6本國史地類借閱總數
+              7外國史地類借閱總數
+              8文學類借閱總數
+              9美術類借閱總數
+              帳號狀態
+              性別
+              是否有逾期記錄
+=== Associator model (full training set) ===
+
+
+Hot Spot
+========
+Mode: maximise
+Total population: 9479 instances
+Target attribute: 是否有逾期記錄
+Target value: 是 [value count in total population: 2219 instances (23.41%)]
+Minimum value count for segments: 732 instances (33% of target value total population)
+Maximum branching factor: 2
+Maximum rule length: 3
+Minimum improvement: 1% increase in probability
+
+是否有逾期記錄=是 (23.41% [2219/9479])
+  借閱總數 > 8 (24.28% [798/3286])
+  |   9美術類借閱總數 <= 21 (24.92% [736/2954])
+  |   6本國史地類借閱總數 <= 3 (24.63% [748/3037])
+  |   |   4應用科學類借閱總數 <= 8 (24.9% [732/2940])
+  5社會科學類借閱總數 > 1 (23.89% [815/3411])
+  |   3自然科學類借閱總數 <= 4 (24.33% [746/3066])
+  |   4應用科學類借閱總數 <= 3 (24.24% [760/3135])
+  |   |   6本國史地類借閱總數 <= 3 (24.62% [735/2985])
+

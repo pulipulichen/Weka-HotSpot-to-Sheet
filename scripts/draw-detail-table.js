@@ -278,7 +278,7 @@ let getRelation = function (result) {
 }
 
 let getInstancesCount = function (result) {
-  
+  //console.log(result)
   if (result.indexOf('[value count in total population: ') > -1) {
     result = result.slice(result.indexOf('[value count in total population: ') + 34)
     result = result.slice(0, result.indexOf(' instances ('))
